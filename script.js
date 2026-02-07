@@ -5,7 +5,6 @@ const torreSelect = document.getElementById("torre");
 const aptoSelect  = document.getElementById("apto");
 const form        = document.getElementById("consultaForm");
 const resultado   = document.getElementById("resultado");
-const cardLocalizacao = document.getElementById("card-localizacao");
 
 // const img    = document.getElementById("mapaImg");
 // const canvas = document.getElementById("mapaCanvas");
@@ -194,8 +193,7 @@ form.addEventListener("submit", e => {
   const torre = torreSelect.value;
   const apto  = aptoSelect.value;
 
-  // 🔒 Sempre começa escondido
-  cardLocalizacao.classList.add("hidden");
+  // limparCanvas();
 
   if (!torre || !apto) {
     resultado.textContent = "Selecione a torre e o apartamento.";
@@ -204,27 +202,23 @@ form.addEventListener("submit", e => {
 
   const vaga = vagasPorApartamento[torre]?.[apto];
 
-  if (vaga) {
-    resultado.innerHTML = `
-      <div class="feedback sucesso">
-        <span class="icone">✔</span>
-        <span>
-          Torre ${torre} Apt. ${apto} possui a vaga de garagem nº <strong>${vaga}</strong>.
-        </span>
-      </div>
-    `;
-
-    // ✅ Só aparece se tiver vaga
-    cardLocalizacao.classList.remove("hidden");
-
-  } else {
-    resultado.innerHTML = `
-      <div class="feedback erro">
-        <span class="icone">✖</span>
-        <span>
-          Torre ${torre} Apt. ${apto} não possui vaga de garagem.
-        </span>
-      </div>
-    `;
-  }
+if (vaga) {
+  resultado.innerHTML = `
+    <div class="feedback sucesso">
+      <span class="icone">✔</span>
+      <span>
+        Torre ${torre} Apt. ${apto} possui a vaga de garagem nº <strong>${vaga}</strong>.
+      </span>
+    </div>
+  `;
+} else {
+  resultado.innerHTML = `
+    <div class="feedback erro">
+      <span class="icone">✖</span>
+      <span>
+        Torre ${torre} Apt. ${apto} não possui vaga de garagem.
+      </span>
+    </div>
+  `;
+}
 });

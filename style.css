@@ -5,7 +5,6 @@
   --cinza-texto: #444;
 }
 
-/* ===== RESET ===== */
 * {
   box-sizing: border-box;
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
@@ -17,64 +16,40 @@ body {
   color: var(--cinza-texto);
 }
 
-/* ===== TOPO ===== */
 .topbar {
-  background: #ffffff;
+  background: #1f7a4d;
+  height: 72px;
 }
 
 .topbar-content {
   max-width: 1200px;
+  height: 100%;
   margin: 0 auto;
-  padding: 12px 16px 0 16px;
+
+  padding-left: 0;      /* REMOVE espaço à esquerda */
+  padding-right: 16px;  /* mantém respiro à direita */
 
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-/* ===== LOGO ===== */
 .logo {
-  height: 58px;
+  height: 72px;        /* IGUAL à altura da barra */
   width: auto;
   display: block;
-}
-
-/* ===== TEXTO TOPO ===== */
-.topbar-text {
-  display: flex;
-  flex-direction: column;
-  position: relative;
 }
 
 .topbar-text h1 {
   margin: 0;
   font-size: 22px;
-  color: var(--verde);
+  color: #ffffff;        /* força branco */
 }
 
 .topbar-text span {
   font-size: 13px;
-  color: #555;
-  margin-top: 2px;
-}
-
-/* ===== LINHA VERDE (CORRETA) ===== */
-.linha-wrapper {
-  position: relative;
-  height: 6px;
-  margin-top: 6px;
-}
-
-.linha-verde {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-
-  height: 8px;
-  background: var(--verde);
-
-  /* começa no texto e vai até o fim da tela */
-  width: calc(100vw - (100vw - 1200px) / 2 - 16px);
+  color: #ffffff;        /* força branco */
+  opacity: 0.9;
 }
 
 /* ===== CONTEÚDO ===== */
@@ -86,6 +61,7 @@ body {
   flex-direction: column;
   gap: 16px;
 }
+
 
 /* ===== CARD ===== */
 .card {
@@ -143,7 +119,6 @@ body {
   font-weight: 500;
 }
 
-/* ===== FEEDBACK ===== */
 .feedback {
   display: flex;
   align-items: center;
@@ -169,49 +144,42 @@ body {
   line-height: 1;
 }
 
-.localizacao-placeholder {
-  margin-top: 12px;
-  padding: 16px;
-  background: #f8f9fa;
-  border: 1px dashed #cfd4d9;
-  border-radius: 6px;
-  font-size: 14px;
-  color: #666;
-}
 
-
-/* ===== MAPA DO CONDOMÍNIO ===== */
+/* ===== MAPA ===== */
 .mapa-container {
+  position: relative;
   width: 100%;
-  overflow-x: auto;           /* segurança para telas muito pequenas */
-}
-
-.mapa-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin: 0 auto;             /* centraliza */
+  max-height: 70vh;
+  overflow: auto;
+  border: 1px solid #ddd;
   border-radius: 6px;
 }
 
+.mapa-container img {
+  width: 100%;
+  display: block;
+}
+
+.mapa-container canvas {
+  position: absolute;
+  inset: 0;
+}
 
 /* ===== FOOTER ===== */
 .footer {
   text-align: center;
   font-size: 12px;
-  padding: 16px;
+  padding: 12px;
   color: #666;
+  
   margin-top: 40px;
+  padding-top: 16px;
   border-top: 1px solid #e0e0e0;
-}
-
-.hidden {
-  display: none !important;
+  
 }
 
 /* ===== RESPONSIVO ===== */
 @media (max-width: 768px) {
-
   .form-grid {
     grid-template-columns: 1fr;
   }
@@ -220,20 +188,15 @@ body {
     width: 100%;
   }
 
-  .logo {
-    height: 58px;
-  }
-
   .topbar-text h1 {
-    font-size: 18px;
+    font-size: 16px;
   }
 
-  .topbar-text span {
-    font-size: 12px;
+  .topbar {
+    height: 64px;
   }
 
-  /* no mobile a linha vai até o fim da tela */
-  .linha-verde {
-    width: 100vw;
+  .logo {
+    height: 64px;
   }
 }
