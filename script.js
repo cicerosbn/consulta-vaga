@@ -5,6 +5,7 @@ const torreSelect = document.getElementById("torre");
 const aptoSelect  = document.getElementById("apto");
 const form        = document.getElementById("consultaForm");
 const resultado   = document.getElementById("resultado");
+const cardLocalizacao = document.getElementById("cardLocalizacao");
 
 // const img    = document.getElementById("mapaImg");
 // const canvas = document.getElementById("mapaCanvas");
@@ -211,6 +212,10 @@ if (vaga) {
       </span>
     </div>
   `;
+  
+  // exibe o mapa
+  cardLocalizacao.classList.remove("hidden");
+  
 } else {
   resultado.innerHTML = `
     <div class="feedback erro">

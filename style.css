@@ -146,23 +146,23 @@ body {
 
 
 /* ===== MAPA ===== */
+.hidden {
+  display: none;
+}
+
 .mapa-container {
-  position: relative;
   width: 100%;
-  max-height: 70vh;
-  overflow: auto;
-  border: 1px solid #ddd;
+  overflow-x: auto;
+  border: 1px dashed #ccc;
   border-radius: 6px;
+  padding: 10px;
 }
 
-.mapa-container img {
-  width: 100%;
+.mapa-img {
   display: block;
-}
-
-.mapa-container canvas {
-  position: absolute;
-  inset: 0;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
 }
 
 /* ===== FOOTER ===== */
