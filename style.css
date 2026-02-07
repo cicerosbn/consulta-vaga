@@ -147,7 +147,7 @@ body {
 
 /* ===== MAPA ===== */
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .mapa-container {
