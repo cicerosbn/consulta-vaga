@@ -173,8 +173,10 @@ torreSelect.addEventListener("change", () => {
   aptoSelect.innerHTML = '<option value="">Selecione</option>';
   aptoSelect.disabled = true;
   resultado.textContent = "";
-  // limparCanvas();
-
+  
+  // 🔴 ESCONDE o mapa sempre que muda a torre
+  cardLocalizacao.classList.add("hidden");
+  
   if (!torreSelect.value) return;
 
   apartamentos.forEach(apto => {
@@ -195,7 +197,9 @@ form.addEventListener("submit", e => {
   const apto  = aptoSelect.value;
 
   // limparCanvas();
-
+  //🔴 por segurança, sempre escondemos primeiro
+  cardLocalizacao.classList.add("hidden");
+  
   if (!torre || !apto) {
     resultado.textContent = "Selecione a torre e o apartamento.";
     return;
@@ -225,5 +229,7 @@ if (vaga) {
       </span>
     </div>
   `;
+    // 🔴 garante que NÃO aparece
+    cardLocalizacao.classList.add("hidden"); 
 }
 });
