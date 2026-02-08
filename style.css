@@ -3,10 +3,8 @@
   --verde-escuro: #17613d;
   --cinza-bg: #f3f5f7;
   --cinza-texto: #444;
-  --cinza-borda: #ddd;
 }
 
-/* ===== RESET ===== */
 * {
   box-sizing: border-box;
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
@@ -18,33 +16,40 @@ body {
   color: var(--cinza-texto);
 }
 
-/* ===== TOPO ===== */
 .topbar {
-  background: var(--verde);
-  padding: 10px 16px;
+  background: #1f7a4d;
+  height: 72px;
 }
 
 .topbar-content {
   max-width: 1200px;
+  height: 100%;
   margin: 0 auto;
+
+  padding-left: 0;      /* REMOVE espaço à esquerda */
+  padding-right: 16px;  /* mantém respiro à direita */
+
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
 }
 
 .logo {
-  height: 44px;
+  height: 72px;        /* IGUAL à altura da barra */
+  width: auto;
+  display: block;
 }
 
 .topbar-text h1 {
   margin: 0;
-  font-size: 20px;
-  color: #fff;
+  font-size: 22px;
+  color: #ffffff;        /* força branco */
 }
 
 .topbar-text span {
   font-size: 13px;
-  color: #eaf6ef;
+  color: #ffffff;        /* força branco */
+  opacity: 0.9;
 }
 
 /* ===== CONTEÚDO ===== */
@@ -57,6 +62,7 @@ body {
   gap: 16px;
 }
 
+
 /* ===== CARD ===== */
 .card {
   background: #fff;
@@ -68,17 +74,14 @@ body {
 .card h2 {
   margin-top: 0;
   font-size: 18px;
-  border-bottom: 2px solid var(--verde);
-  padding-bottom: 6px;
 }
 
-/* ===== FORMULÁRIOS ===== */
+/* ===== FORM ===== */
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr auto;
   gap: 14px;
   align-items: end;
-  margin-top: 12px;
 }
 
 .field label {
@@ -87,16 +90,14 @@ body {
   display: block;
 }
 
-.field select,
-.field input {
+.field select {
   width: 100%;
   padding: 10px;
   font-size: 14px;
   border-radius: 6px;
-  border: 1px solid var(--cinza-borda);
+  border: 1px solid #ccc;
 }
 
-/* ===== BOTÕES ===== */
 .actions button {
   padding: 11px 22px;
   background: var(--verde);
@@ -111,7 +112,7 @@ body {
   background: var(--verde-escuro);
 }
 
-/* ===== RESULTADOS ===== */
+/* ===== RESULTADO ===== */
 .resultado {
   margin-top: 14px;
   font-size: 15px;
@@ -143,63 +144,38 @@ body {
   line-height: 1;
 }
 
+
 /* ===== MAPA ===== */
-.mapa-container {
-  position: relative;
-  width: 100%;
-  max-height: 70vh;
-  overflow: auto;
-  border: 1px solid var(--cinza-borda);
-  border-radius: 6px;
-  margin-top: 12px;
-}
-
-.mapa-container img {
-  width: 100%;
-  display: block;
-}
-
-.mapa-container canvas {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-#mapaWrapper {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
-}
-
-#mapaImg {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-}
-
-#mapaCanvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-/* ===== UTIL ===== */
 .hidden {
-  display: none;
+  display: none !important;
+}
+
+.mapa-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px dashed #ccc;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.mapa-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
 }
 
 /* ===== FOOTER ===== */
 .footer {
   text-align: center;
   font-size: 12px;
-  padding: 14px;
+  padding: 12px;
   color: #666;
-  margin-top: 30px;
+  
+  margin-top: 40px;
+  padding-top: 16px;
   border-top: 1px solid #e0e0e0;
+  
 }
 
 /* ===== RESPONSIVO ===== */
@@ -212,15 +188,15 @@ body {
     width: 100%;
   }
 
-  .logo {
-    height: 36px;
-  }
-
   .topbar-text h1 {
     font-size: 16px;
   }
 
-  .topbar-text span {
-    font-size: 12px;
+  .topbar {
+    height: 64px;
+  }
+
+  .logo {
+    height: 64px;
   }
 }

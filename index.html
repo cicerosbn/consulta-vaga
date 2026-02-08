@@ -1,105 +1,89 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Consulta de Vaga de Garagem</title>
-
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Morada de Piatã - Consulta de Vaga de Garagem</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
 
-  <!-- ===== TOPO ===== -->
-  <div class="topbar">
-    <div class="topbar-content">
-      <img src="morada_de_piata.png" alt="Morada de Piatã" class="logo" />
-      <div class="topbar-text">
-        <h1>Consulta de Vaga de Garagem</h1>
-        <span>Condomínio Morada de Piatã</span>
-      </div>
+<header class="topbar">
+  <div class="topbar-content">
+    <img src="morada_de_piata.png"
+         alt="Condomínio Morada de Piatã"
+         class="logo">
+
+    <div class="topbar-text">
+      <h1>Morada de Piatã</h1>
+      <span>Consulta de Vaga de Garagem</span>
     </div>
   </div>
+</header>
 
-  <!-- ===== CONTEÚDO ===== -->
-  <main class="container">
+<main class="container">
 
-    <!-- ===== CARD 1: TORRE / APARTAMENTO ===== -->
-    <div class="card">
-      <h2>Informe os dados abaixo</h2>
+  <section class="card">
+    <h2> Informe os dados abaixo </h2>
 
-      <form id="consultaForm" class="form-grid">
-        <div class="field">
-          <label for="torre">Torre</label>
-          <select id="torre">
-            <option value="">Selecione</option>
-            <option value="1">Torre 1</option>
-            <option value="2">Torre 2</option>
-            <option value="3">Torre 3</option>
-            <option value="4">Torre 4</option>
-            <option value="5">Torre 5</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label for="apto">Apartamento</label>
-          <select id="apto" disabled>
-            <option value="">Selecione</option>
-          </select>
-        </div>
-
-        <div class="actions">
-          <button type="submit">Consultar</button>
-        </div>
-      </form>
-
-      <div id="resultado" class="resultado"></div>
-    </div>
-
-    <!-- ===== CARD 2: CONSULTA POR VAGA ===== -->
-    <div class="card">
-      <h2>Consultar por número da vaga</h2>
-
-      <form id="consultaVagaForm" class="form-grid">
-        <div class="field">
-          <label for="numeroVaga">Número da vaga</label>
-          <input
-            type="number"
-            id="numeroVaga"
-            placeholder="Ex: 335"
-            min="1"
-          />
-        </div>
-
-        <div class="actions">
-          <button type="submit">Localizar vaga</button>
-        </div>
-      </form>
-
-      <div id="resultadoVaga" class="resultado"></div>
-    </div>
-
-    <!-- ===== CARD 3: LOCALIZAÇÃO DA VAGA ===== -->
-    <div id="cardLocalizacao" class="card hidden">
-      <h2>Localização da Vaga</h2>
-
-      <div class="mapa-container">
-        <img
-          src="img/mapa_condominio.png"
-          alt="Mapa do condomínio"
-          id="mapaImg"
-        />
-        <canvas id="mapaCanvas"></canvas>
+    <form id="consultaForm" class="form-grid">
+      <div class="field">
+        <label for="torre">Torre</label>
+        <select id="torre">
+          <option value="">Selecione</option>
+          <option value="1">Torre 1</option>
+          <option value="2">Torre 2</option>
+          <option value="3">Torre 3</option>
+          <option value="4">Torre 4</option>
+          <option value="5">Torre 5</option>
+        </select>
       </div>
+
+      <div class="field">
+        <label for="apto">Apartamento</label>
+        <select id="apto" disabled>
+          <option value="">Selecione</option>
+        </select>
+      </div>
+
+      <div class="actions">
+        <button type="submit">Consultar</button>
+      </div>
+    </form>
+
+    <div id="resultado" class="resultado"></div>
+  </section>
+
+	<div class="card hidden" id="cardLocalizacao">
+	  <h2>Localização da Vaga</h2>
+
+	  <div class="mapa-container">
+		<img
+		  src="img/mapa_condominio.png"
+		  alt="Mapa do condomínio"
+		  class="mapa-img"
+		>
+	  </div>
+	</div>
+
+<!--
+  <section class="card">
+    <h2>Mapa do estacionamento</h2>
+
+    <div class="mapa-container">
+      <img src="mapa.jpg" id="mapaImg" alt="Mapa do estacionamento">
+      <canvas id="mapaCanvas"></canvas>
     </div>
+  </section>
+-->
 
-  </main>
+</main>
 
-  <!-- ===== RODAPÉ ===== -->
-  <footer class="footer">
-    © Desenvolvido por Santiago
-  </footer>
+<footer class="footer">
+  <span>© Desenvolvido por Santiago</span>
+</footer>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
