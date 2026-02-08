@@ -3,8 +3,10 @@
   --verde-escuro: #17613d;
   --cinza-bg: #f3f5f7;
   --cinza-texto: #444;
+  --cinza-borda: #ddd;
 }
 
+/* ===== RESET ===== */
 * {
   box-sizing: border-box;
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
@@ -16,40 +18,33 @@ body {
   color: var(--cinza-texto);
 }
 
+/* ===== TOPO ===== */
 .topbar {
-  background: #1f7a4d;
-  height: 72px;
+  background: var(--verde);
+  padding: 10px 16px;
 }
 
 .topbar-content {
   max-width: 1200px;
-  height: 100%;
   margin: 0 auto;
-
-  padding-left: 0;      /* REMOVE espaço à esquerda */
-  padding-right: 16px;  /* mantém respiro à direita */
-
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 .logo {
-  height: 72px;        /* IGUAL à altura da barra */
-  width: auto;
-  display: block;
+  height: 44px;
 }
 
 .topbar-text h1 {
   margin: 0;
-  font-size: 22px;
-  color: #ffffff;        /* força branco */
+  font-size: 20px;
+  color: #fff;
 }
 
 .topbar-text span {
   font-size: 13px;
-  color: #ffffff;        /* força branco */
-  opacity: 0.9;
+  color: #eaf6ef;
 }
 
 /* ===== CONTEÚDO ===== */
@@ -62,7 +57,6 @@ body {
   gap: 16px;
 }
 
-
 /* ===== CARD ===== */
 .card {
   background: #fff;
@@ -74,14 +68,17 @@ body {
 .card h2 {
   margin-top: 0;
   font-size: 18px;
+  border-bottom: 2px solid var(--verde);
+  padding-bottom: 6px;
 }
 
-/* ===== FORM ===== */
+/* ===== FORMULÁRIOS ===== */
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr auto;
   gap: 14px;
   align-items: end;
+  margin-top: 12px;
 }
 
 .field label {
@@ -90,14 +87,16 @@ body {
   display: block;
 }
 
-.field select {
+.field select,
+.field input {
   width: 100%;
   padding: 10px;
   font-size: 14px;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--cinza-borda);
 }
 
+/* ===== BOTÕES ===== */
 .actions button {
   padding: 11px 22px;
   background: var(--verde);
@@ -112,7 +111,7 @@ body {
   background: var(--verde-escuro);
 }
 
-/* ===== RESULTADO ===== */
+/* ===== RESULTADOS ===== */
 .resultado {
   margin-top: 14px;
   font-size: 15px;
@@ -144,50 +143,63 @@ body {
   line-height: 1;
 }
 
-
 /* ===== MAPA ===== */
-.hidden {
-  display: none !important;
+.mapa-container {
+  position: relative;
+  width: 100%;
+  max-height: 70vh;
+  overflow: auto;
+  border: 1px solid var(--cinza-borda);
+  border-radius: 6px;
+  margin-top: 12px;
 }
 
 .mapa-container img {
   width: 100%;
-  max-width: 100%;
-  height: auto;
   display: block;
-}
-
-.mapa-container {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
 }
 
 .mapa-container canvas {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   pointer-events: none;
+}
+#mapaWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+#mapaImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
 }
 
 #mapaCanvas {
   position: absolute;
   top: 0;
   left: 0;
-  pointer-events: none; /* não bloqueia zoom/scroll */
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ===== UTIL ===== */
+.hidden {
+  display: none;
 }
 
 /* ===== FOOTER ===== */
 .footer {
   text-align: center;
   font-size: 12px;
-  padding: 12px;
+  padding: 14px;
   color: #666;
-  
-  margin-top: 40px;
-  padding-top: 16px;
+  margin-top: 30px;
   border-top: 1px solid #e0e0e0;
-  
 }
 
 /* ===== RESPONSIVO ===== */
@@ -200,15 +212,15 @@ body {
     width: 100%;
   }
 
+  .logo {
+    height: 36px;
+  }
+
   .topbar-text h1 {
     font-size: 16px;
   }
 
-  .topbar {
-    height: 64px;
-  }
-
-  .logo {
-    height: 64px;
+  .topbar-text span {
+    font-size: 12px;
   }
 }
