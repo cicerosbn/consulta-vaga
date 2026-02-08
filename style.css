@@ -6,6 +6,10 @@
   --borda-clara: #e0e0e0;
 }
 
+html {
+  color-scheme: light;
+}
+
 * {
   box-sizing: border-box;
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
@@ -13,13 +17,13 @@
 
 body {
   margin: 0;
-  background: var(--cinza-bg);
+  background: var(--cinza-bg) !important;;
   color: var(--cinza-texto);
 }
 
 /* ===== BARRA SUPERIOR ===== */
 .topbar {
-  background: #ffffff;
+  background: #ffffff !important;
   height: 72px;
   border-bottom: 1px solid var(--borda-clara);
 }
@@ -64,7 +68,7 @@ body {
 
 /* ===== CARD ===== */
 .card {
-  background: #fff;
+  background-color: #ffffff !important;
   border-radius: 10px;
   padding: 18px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
