@@ -7,20 +7,107 @@ const form        = document.getElementById("consultaForm");
 const resultado   = document.getElementById("resultado");
 const cardLocalizacao = document.getElementById("cardLocalizacao");
 
-// const img    = document.getElementById("mapaImg");
-// const canvas = document.getElementById("mapaCanvas");
-// const ctx    = canvas.getContext("2d");
+// 👉 AQUI entram os elementos do mapa
+const mapaImg    = document.getElementById("mapaImg");
+const mapaCanvas = document.getElementById("mapaCanvas");
+let ctx = null;
+let vagaAtual = null;
+
+const MAPA_ORIGINAL = {
+  width: 1900,
+  height: 4000
+};
+
+
+if (mapaCanvas) {
+  ctx = mapaCanvas.getContext("2d");
+}
 
 /* ======================================================
-   AJUSTE DO CANVAS AO TAMANHO DA IMAGEM
+   FUNÇÕES DO MAPA
    ====================================================== */
-// function ajustarCanvas() {
-//   canvas.width  = img.clientWidth;
-//   canvas.height = img.clientHeight;
-// }
+function ajustarCanvas() {
+  if (!mapaImg || !mapaCanvas) return;
 
-// img.onload = ajustarCanvas;
-// window.addEventListener("resize", ajustarCanvas);
+  mapaCanvas.width  = mapaImg.clientWidth;
+  mapaCanvas.height = mapaImg.clientHeight;
+
+  if (ctx) {
+    ctx.clearRect(0, 0, mapaCanvas.width, mapaCanvas.height);
+  }
+}
+
+function desenharTeste() {
+  if (!ctx) return;
+
+  ctx.fillStyle = "rgba(255, 0, 0, 0.6)";
+  ctx.fillRect(30, 30, 120, 80);
+}
+
+/*
+function destacarVaga335() {
+  if (!ctx || !mapaCanvas) return;
+
+  const vaga = coordenadasVagas[335];
+  if (!vaga) return;
+
+  // fatores de escala
+  const scaleX = mapaCanvas.width  / MAPA_ORIGINAL.width;
+  const scaleY = mapaCanvas.height / MAPA_ORIGINAL.height;
+
+  ctx.fillStyle = "rgba(255, 0, 0, 0.6)";
+  ctx.fillRect(
+    vaga.x * scaleX,
+    vaga.y * scaleY,
+    vaga.w * scaleX,
+    vaga.h * scaleY
+  );
+}
+*/
+
+function destacarVaga335() {
+  if (!ctx || !mapaImg || !mapaCanvas) return;
+
+  const vaga = coordenadasVagas[335];
+  if (!vaga) return;
+
+  // 🔹 fatores de escala
+  const scaleX = mapaCanvas.width / MAPA_ORIGINAL.width;
+  const scaleY = mapaCanvas.height / MAPA_ORIGINAL.height;
+
+  // 🔹 converte coordenadas
+  const x = vaga.x * scaleX;
+  const y = vaga.y * scaleY;
+  const w = vaga.w * scaleX;
+  const h = vaga.h * scaleY;
+
+  ctx.fillStyle = "rgba(255, 0, 0, 0.6)";
+  ctx.fillRect(x, y, w, h);
+}
+
+function converterCoordenadas({ x, y, w, h }) {
+  return {
+    x: x * 2,
+    y: (MAPA_ORIGINAL.height + y),
+    w: w * 2,
+    h: h
+  };
+}
+
+/* ======================================================
+   EVENTOS DO MAPA  👈 É AQUI
+   ====================================================== */
+if (mapaImg) {
+  mapaImg.addEventListener("load", () => {
+    ajustarCanvas();
+
+    if (vagaAtual === 335) {
+      destacarVaga335();
+    }
+  });
+}
+
+window.addEventListener("resize", ajustarCanvas);
 
 /* ======================================================
    REGRAS DO CONDOMÍNIO
@@ -156,6 +243,11 @@ const vagasPorApartamento = {
   }
 };
 
+const coordenadasVagas = {
+  335: { x: 1236, y: 2438, w: 71, h: 35 }
+};
+
+
 /* ======================================================
    CANVAS (por enquanto só limpamos)
    O destaque visual da vaga entra depois
@@ -176,6 +268,10 @@ torreSelect.addEventListener("change", () => {
   
   // 🔴 ESCONDE o mapa sempre que muda a torre
   cardLocalizacao.classList.add("hidden");
+  // 🔴 limpa o canvas com segurança
+  if (ctx && mapaCanvas) {
+  ctx.clearRect(0, 0, mapaCanvas.width, mapaCanvas.height);
+  }
   
   if (!torreSelect.value) return;
 
@@ -199,6 +295,9 @@ form.addEventListener("submit", e => {
   // limparCanvas();
   //🔴 por segurança, sempre escondemos primeiro
   cardLocalizacao.classList.add("hidden");
+  if (ctx && mapaCanvas) {
+  ctx.clearRect(0, 0, mapaCanvas.width, mapaCanvas.height);
+  }
   
   if (!torre || !apto) {
     resultado.textContent = "Selecione a torre e o apartamento.";
@@ -217,8 +316,19 @@ if (vaga) {
     </div>
   `;
   
-  // exibe o mapa
-  cardLocalizacao.classList.remove("hidden");
+   vagaAtual = 335;
+   // exibe o mapa
+   cardLocalizacao.classList.remove("hidden");
+ 
+
+	// força recarregar a imagem (garante o load)
+	//mapaImg.src = mapaImg.src;
+	
+	// garante que o canvas está no tamanho certo
+    ajustarCanvas();
+
+    // desenha depois de ajustar
+    destacarVaga335();
   
 } else {
   resultado.innerHTML = `
@@ -230,6 +340,9 @@ if (vaga) {
     </div>
   `;
     // 🔴 garante que NÃO aparece
-    cardLocalizacao.classList.add("hidden"); 
+    cardLocalizacao.classList.add("hidden");
+  if (ctx && mapaCanvas) {
+  ctx.clearRect(0, 0, mapaCanvas.width, mapaCanvas.height);
+  }
 }
 });

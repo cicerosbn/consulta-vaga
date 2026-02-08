@@ -150,19 +150,31 @@ body {
   display: none !important;
 }
 
-.mapa-container {
+.mapa-container img {
   width: 100%;
-  overflow-x: auto;
-  border: 1px dashed #ccc;
-  border-radius: 6px;
-  padding: 10px;
-}
-
-.mapa-img {
-  display: block;
   max-width: 100%;
   height: auto;
-  margin: 0 auto;
+  display: block;
+}
+
+.mapa-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.mapa-container canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+#mapaCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none; /* não bloqueia zoom/scroll */
 }
 
 /* ===== FOOTER ===== */

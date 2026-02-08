@@ -58,13 +58,17 @@
 	<div class="card hidden" id="cardLocalizacao">
 	  <h2>Localização da Vaga</h2>
 
-	  <div class="mapa-container">
-		<img
+	 <div class="mapa-container">
+		  <img
+		  id="mapaImg"
 		  src="img/mapa_condominio.png"
+		  data-width="1900"
+		  data-height="4000"
 		  alt="Mapa do condomínio"
-		  class="mapa-img"
-		>
-	  </div>
+		/>
+
+		  <canvas id="mapaCanvas"></canvas>
+	 </div>
 	</div>
 
 <!--
