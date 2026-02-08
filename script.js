@@ -206,6 +206,14 @@ function converterCoordenadasIllustrator({ x, y, w, h }) {
   };
 }
 
+function redesenharMapa() {
+  ajustarCanvas();
+
+  if (vagaAtual) {
+    destacarVaga(vagaAtual);
+  }
+}
+
 function destacarVaga(numeroVaga) {
   if (!ctx || !mapaCanvas) return;
 
@@ -231,22 +239,16 @@ function destacarVaga(numeroVaga) {
    ====================================================== */
 if (mapaImg) {
   mapaImg.addEventListener("load", () => {
-    requestAnimationFrame(() => {
-      ajustarCanvas();
-      if (vagaAtual) {
-        destacarVaga(vagaAtual);
-      }
-    });
+    requestAnimationFrame(redesenharMapa);
   });
 }
 
 window.addEventListener("resize", () => {
-  requestAnimationFrame(() => {
-    ajustarCanvas();
-    if (vagaAtual) {
-      destacarVaga(vagaAtual);
-    }
-  });
+  requestAnimationFrame(redesenharMapa);
+});
+
+window.addEventListener("scroll", () => {
+  requestAnimationFrame(redesenharMapa);
 });
 
 /* ======================================================
