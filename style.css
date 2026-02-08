@@ -8,6 +8,7 @@
 
 html {
   color-scheme: light;
+  background-color: #f3f5f7 !important;
 }
 
 * {
@@ -181,5 +182,25 @@ body {
   
    .topbar-text span {
     font-size: 12px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background-color: #f3f5f7 !important;
+    color: #444 !important;
+  }
+
+  .topbar,
+  .card,
+  .footer {
+    background-color: #ffffff !important;
+    color: #444 !important;
+  }
+
+  select,
+  button {
+    background-color: #ffffff !important;
+    color: #444 !important;
   }
 }
