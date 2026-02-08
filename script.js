@@ -18,6 +18,7 @@ const mapaCanvas = document.getElementById("mapaCanvas");
 
 let ctx = null;
 let vagaAtual = null;
+let scrollTimeout = null;
 
 if (mapaCanvas) {
   ctx = mapaCanvas.getContext("2d");
@@ -248,7 +249,18 @@ window.addEventListener("resize", () => {
 });
 
 window.addEventListener("scroll", () => {
+  // redesenha enquanto está rolando
   requestAnimationFrame(redesenharMapa);
+
+  // limpa qualquer timer anterior
+  if (scrollTimeout) {
+    clearTimeout(scrollTimeout);
+  }
+
+  // força redesenho FINAL após o scroll terminar
+  scrollTimeout = setTimeout(() => {
+    requestAnimationFrame(redesenharMapa);
+  }, 150);
 });
 
 /* ======================================================
