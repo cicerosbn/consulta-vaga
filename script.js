@@ -6,6 +6,7 @@ const aptoSelect  = document.getElementById("apto");
 const form        = document.getElementById("consultaForm");
 const resultado   = document.getElementById("resultado");
 const cardLocalizacao = document.getElementById("cardLocalizacao");
+const localizacaoConteudo = document.querySelector(".localizacao-conteudo");
 
 /* ======================================================
    REGRAS DO CONDOMÍNIO
@@ -194,6 +195,21 @@ if (vaga) {
     </div>
   `;
   
+  // monta o nome do arquivo da vaga
+  const nomeImagem = `vaga_${vaga}.png`;
+
+  // limpa conteúdo anterior
+  localizacaoConteudo.innerHTML = "";
+
+  // cria a imagem
+  const img = document.createElement("img");
+  img.src = `img/vagas/${nomeImagem}`;
+  img.alt = `Localização da vaga ${vaga}`;
+
+  localizacaoConteudo.appendChild(img);  
+  
+  
+  // exibe quadro
   cardLocalizacao.style.display = "block";
   
   
@@ -206,7 +222,7 @@ if (vaga) {
       </span>
     </div>
   `;
-  
+  localizacaoConteudo.innerHTML = "";
   cardLocalizacao.style.display = "none";
   
 }

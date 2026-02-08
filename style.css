@@ -148,6 +148,19 @@ body {
   line-height: 1;
 }
 
+/* ===== LOCALIZAÇÃO DA VAGA ===== */
+.localizacao-conteudo {
+  margin-top: 12px;
+}
+
+.localizacao-conteudo img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+}
+
 /* ===== FOOTER ===== */
 .footer {
   text-align: center;
