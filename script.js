@@ -1,39 +1,16 @@
-/* ======================================================
-   ELEMENTOS DA PÁGINA
-   ====================================================== */
 const torreSelect = document.getElementById("torre");
 const aptoSelect  = document.getElementById("apto");
 const form        = document.getElementById("consultaForm");
 const resultado   = document.getElementById("resultado");
 const cardLocalizacao = document.getElementById("cardLocalizacao");
+const mapaImg = document.getElementById("mapaImg");
 
-// const img    = document.getElementById("mapaImg");
-// const canvas = document.getElementById("mapaCanvas");
-// const ctx    = canvas.getContext("2d");
-
-/* ======================================================
-   AJUSTE DO CANVAS AO TAMANHO DA IMAGEM
-   ====================================================== */
-// function ajustarCanvas() {
-//   canvas.width  = img.clientWidth;
-//   canvas.height = img.clientHeight;
-// }
-
-// img.onload = ajustarCanvas;
-// window.addEventListener("resize", ajustarCanvas);
-
-/* ======================================================
-   REGRAS DO CONDOMÍNIO
-   ====================================================== */
+/* APARTAMENTOS */
 function gerarApartamentos() {
   const lista = [];
 
-  // Térreo (1 a 8)
-  for (let i = 1; i <= 8; i++) {
-    lista.push(i.toString());
-  }
+  for (let i = 1; i <= 8; i++) lista.push(i.toString());
 
-  // 1º ao 17º andar (101 a 1708)
   for (let andar = 1; andar <= 17; andar++) {
     for (let f = 1; f <= 8; f++) {
       lista.push(`${andar}${f.toString().padStart(2, "0")}`);
@@ -45,10 +22,7 @@ function gerarApartamentos() {
 
 const apartamentos = gerarApartamentos();
 
-/* ======================================================
-   CADASTRO DE VAGAS POR TORRE / APARTAMENTO
-   Somente quem está aqui POSSUI vaga
-   ====================================================== */
+/* VAGAS */
 const vagasPorApartamento = {
   "1": {
     "2":372,"3":384,"6":397,"7":424,
@@ -156,50 +130,34 @@ const vagasPorApartamento = {
   }
 };
 
-/* ======================================================
-   CANVAS (por enquanto só limpamos)
-   O destaque visual da vaga entra depois
-   ====================================================== */
-// function limparCanvas() {
-//   ctx.clearRect(0, 0, canvas.width, canvas.height);
-// }
-
-/* ======================================================
-   EVENTOS
-   ====================================================== */
-
-// Seleção da torre
+/* TORRE */
 torreSelect.addEventListener("change", () => {
   aptoSelect.innerHTML = '<option value="">Selecione</option>';
   aptoSelect.disabled = true;
-  resultado.textContent = "";
-  
-  // 🔴 ESCONDE o mapa sempre que muda a torre
+  resultado.innerHTML = "";
   cardLocalizacao.classList.add("hidden");
-  
+
   if (!torreSelect.value) return;
 
   apartamentos.forEach(apto => {
     const opt = document.createElement("option");
     opt.value = apto;
-    opt.textContent = `${apto}`;
+    opt.textContent = apto;
     aptoSelect.appendChild(opt);
   });
 
   aptoSelect.disabled = false;
 });
 
-// Envio do formulário
+/* SUBMIT */
 form.addEventListener("submit", e => {
   e.preventDefault();
 
   const torre = torreSelect.value;
   const apto  = aptoSelect.value;
 
-  // limparCanvas();
-  //🔴 por segurança, sempre escondemos primeiro
   cardLocalizacao.classList.add("hidden");
-  
+
   if (!torre || !apto) {
     resultado.textContent = "Selecione a torre e o apartamento.";
     return;
@@ -207,29 +165,27 @@ form.addEventListener("submit", e => {
 
   const vaga = vagasPorApartamento[torre]?.[apto];
 
-if (vaga) {
-  resultado.innerHTML = `
-    <div class="feedback sucesso">
-      <span class="icone">✔</span>
-      <span>
-        Torre ${torre} Apt. ${apto} possui a vaga de garagem nº <strong>${vaga}</strong>.
-      </span>
-    </div>
-  `;
-  
-  // exibe o mapa
-  cardLocalizacao.classList.remove("hidden");
-  
-} else {
-  resultado.innerHTML = `
-    <div class="feedback erro">
-      <span class="icone">✖</span>
-      <span>
-        Torre ${torre} Apt. ${apto} não possui vaga de garagem.
-      </span>
-    </div>
-  `;
-    // 🔴 garante que NÃO aparece
-    cardLocalizacao.classList.add("hidden"); 
-}
+  if (vaga) {
+    resultado.innerHTML = `
+      <div class="feedback sucesso">
+        <span class="icone">✔</span>
+        <span>
+          Torre ${torre} Apt. ${apto} possui a vaga de garagem nº <strong>${vaga}</strong>.
+        </span>
+      </div>
+    `;
+
+    mapaImg.src = `img/vaga_${vaga}.png`;
+    cardLocalizacao.classList.remove("hidden");
+
+  } else {
+    resultado.innerHTML = `
+      <div class="feedback erro">
+        <span class="icone">✖</span>
+        <span>
+          Torre ${torre} Apt. ${apto} não possui vaga de garagem.
+        </span>
+      </div>
+    `;
+  }
 });
