@@ -179,12 +179,13 @@ body {
   .topbar-text h1 {
     font-size: 18px;
   }
-  
-   .topbar-text span {
+
+  .topbar-text span {
     font-size: 12px;
   }
 }
 
+/* ===== FORÇAR CORES CLARAS ===== */
 @media (prefers-color-scheme: dark) {
   html, body {
     background-color: #f3f5f7 !important;
@@ -203,4 +204,15 @@ body {
     background-color: #ffffff !important;
     color: #444 !important;
   }
+}
+
+/* ===== BLOQUEIO DEFINITIVO DE DARK MODE FORÇADO ===== */
+html, body {
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+* {
+  filter: none !important;
+  -webkit-filter: none !important;
 }
