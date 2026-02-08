@@ -175,7 +175,7 @@ form.addEventListener("submit", e => {
       </div>
     `;
 
-    mapaImg.src = `img/vaga_${vaga}.png`;
+    mapaImg.src = `./img/vaga_${vaga}.png?v=${Date.now()}`;
     cardLocalizacao.classList.remove("hidden");
 
   } else {
