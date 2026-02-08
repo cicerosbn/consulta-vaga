@@ -5,6 +5,7 @@ const torreSelect = document.getElementById("torre");
 const aptoSelect  = document.getElementById("apto");
 const form        = document.getElementById("consultaForm");
 const resultado   = document.getElementById("resultado");
+const cardLocalizacao = document.getElementById("cardLocalizacao");
 
 /* ======================================================
    REGRAS DO CONDOMÍNIO
@@ -149,6 +150,7 @@ torreSelect.addEventListener("change", () => {
   aptoSelect.innerHTML = '<option value="">Selecione</option>';
   aptoSelect.disabled = true;
   resultado.textContent = "";
+  cardLocalizacao.style.display = "none";
 
 
   if (!torreSelect.value) return;
@@ -191,6 +193,10 @@ if (vaga) {
       </span>
     </div>
   `;
+  
+  cardLocalizacao.style.display = "block";
+  
+  
 } else {
   resultado.innerHTML = `
     <div class="feedback erro">
@@ -200,5 +206,8 @@ if (vaga) {
       </span>
     </div>
   `;
+  
+  cardLocalizacao.style.display = "none";
+  
 }
 });
