@@ -614,7 +614,7 @@ if (registro) {
     <div class="feedback sucesso">
       <span class="icone">✔</span>
       <span>
-        Torre ${torre} Apt. ${apto} possui a vaga de garagem nº <strong>${vaga}</strong><br>
+        O Apartamento ${apto} da Torre ${torre} possui a vaga de garagem nº <strong>${vaga}</strong><br>
         <strong>Tipo:</strong> ${tipo}<br>
         <strong>Área (m²):</strong> ${area} (${dimensoes})
       </span>
@@ -635,7 +635,7 @@ if (registro) {
     <div class="feedback erro">
       <span class="icone">✖</span>
       <span>
-        Torre ${torre} Apt. ${apto} não possui vaga de garagem.
+        O Apartamento ${apto} da Torre ${torre} não possui vaga de garagem.
       </span>
     </div>
   `;
