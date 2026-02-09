@@ -592,7 +592,6 @@ form.addEventListener("submit", e => {
     return;
   }
 
-  /*const vaga = vagasPorApartamento[torre]?.[apto];*/
   const chave = `${torre}-${apto}`;
   const registro = vagasPorApartamento[chave];
 
@@ -601,7 +600,9 @@ if (registro) {
   const vaga = registro.vaga;
   const tipo = registro.tipo;
   const area = registro.area;
-  /*const dimensoes = dimensoesPorTipo[tipo];*/
+  const iconeVaga = "🚗";
+  const iconePCD = tipo === "PCD" ? " ♿" : "";
+
 	let dimensoes;
 
 	if (tipo === "PCD") {
@@ -614,9 +615,9 @@ if (registro) {
     <div class="feedback sucesso">
       <span class="icone">✔</span>
       <span>
-        O Apartamento ${apto} da Torre ${torre} possui a vaga de garagem nº <strong>${vaga}</strong><br>
-        <strong>Tipo:</strong> ${tipo}<br>
-        <strong>Área (m²):</strong> ${area} (${dimensoes})
+		O Apartamento ${apto} da Torre ${torre} possui a vaga de garagem nº <strong>${vaga}</strong> ${iconeVaga}<br>
+		<strong>Tipo:</strong> ${tipo}${iconePCD}<br>
+		<strong>Área (m²):</strong> ${area} (${dimensoes})
       </span>
     </div>
   `;
