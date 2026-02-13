@@ -1,0 +1,5 @@
+1. colar arquivo script.js no Terser (https://try.terser.org/)
+2. gerar arquivo script.min.js
+3. colar arquivo script.min.js no Obfuscator.io (https://obfuscator.io/dashboard)
+4. gerar arquivo script.prod.js
+5. referenciar apenas script.prod.js no index.html

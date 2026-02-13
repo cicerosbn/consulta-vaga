@@ -1,14 +1,14 @@
-<!-- Oi (: -->
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="color-scheme" content="light">
-  <meta name="supported-color-schemes" content="light">
-  <meta name="theme-color" content="#ffffff">
   <title>Morada de Piatã - Consulta de Vaga de Garagem</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+	  
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="img/favicon.png">
 </head>
@@ -16,10 +16,7 @@
 
 <header class="topbar">
   <div class="topbar-content">
-    <img src="img/moradadepiata.png"
-         alt="Condomínio Morada de Piatã"
-         class="logo">
-
+    <img src="img/moradadepiata.png" alt="Condomínio Morada de Piatã" class="logo">
     <div class="topbar-text">
       <h1>Morada de Piatã</h1>
       <span>Consulta de Vaga de Garagem</span>
@@ -29,21 +26,15 @@
 </header>
 
 <main class="container">
-
   <section class="card">
     <h2> Informe os dados abaixo </h2>
 
     <form id="consultaForm" class="form-grid">
       <div class="field">
         <label for="torre">Torre</label>
-        <select id="torre">
-          <option value="">Selecione</option>
-          <option value="1">Torre 1</option>
-          <option value="2">Torre 2</option>
-          <option value="3">Torre 3</option>
-          <option value="4">Torre 4</option>
-          <option value="5">Torre 5</option>
-        </select>
+		<select id="torre">
+		  <option value="">Selecione</option>
+		</select>
       </div>
 
       <div class="field">
@@ -60,16 +51,10 @@
 
     <div id="resultado" class="resultado"></div>
   </section>
- 	
-    <section class="card" id="cardLocalizacao" style="display: none;">
-	  <h2>Localização da Vaga</h2>
-	  <div class="localizacao-conteudo">
-	  </div>   
-   </section>
 </main>
 
 <footer class="footer">
-  <span>© Desenvolvido por Santiago</span>
+  <span>© Desenvolvido por Santiago (v1.0.0-dev)</span>
 </footer>
 
 <script src="script.js"></script>
